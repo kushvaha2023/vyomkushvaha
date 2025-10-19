@@ -1,0 +1,128 @@
+import { ExternalLink, Github } from 'lucide-react';
+import { Button } from './ui/button';
+
+interface Project {
+  title: string;
+  description: string;
+  tech: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+}
+
+const Projects = () => {
+  const projects: Project[] = [
+    {
+      title: 'Password Strength Checker',
+      description:
+        'A Python-based tool that analyzes password security by checking length, complexity, and common patterns. Provides detailed feedback on password strength and suggestions for improvement.',
+      tech: ['Python', 'Regex', 'Security'],
+      githubUrl: '#',
+    },
+    {
+      title: 'Portfolio Website',
+      description:
+        'Personal portfolio website with a hacker-inspired aesthetic. Features Matrix rain effect, interactive terminal, and responsive design. Built with modern web technologies.',
+      tech: ['HTML', 'CSS', 'JavaScript', 'React'],
+      githubUrl: '#',
+      liveUrl: '#',
+    },
+    {
+      title: 'Basic AI Chatbot',
+      description:
+        'Simple conversational AI chatbot built with Python and natural language processing. Demonstrates basic NLP concepts and intent recognition for answering common queries.',
+      tech: ['Python', 'NLP', 'Machine Learning'],
+      githubUrl: '#',
+    },
+  ];
+
+  return (
+    <section id="projects" className="py-20 px-4">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-12 animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Featured <span className="text-neon">Projects</span>
+          </h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            A selection of projects I've built while learning cybersecurity, AI, and software development. Each
+            project represents a step in my learning journey.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-fade-in-up">
+          {projects.map((project, index) => (
+            <div
+              key={project.title}
+              className="card-glow group"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="text-xs font-mono px-3 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center space-x-3 pt-2">
+                  {project.githubUrl && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="group/btn hover:border-primary hover:bg-primary/10"
+                      asChild
+                    >
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                        <Github size={16} className="mr-2 group-hover/btn:text-primary" />
+                        Code
+                      </a>
+                    </Button>
+                  )}
+                  {project.liveUrl && (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="group/btn hover:border-accent hover:bg-accent/10"
+                      asChild
+                    >
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink size={16} className="mr-2 group-hover/btn:text-accent" />
+                        Live Demo
+                      </a>
+                    </Button>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-muted-foreground mb-4">More projects coming as I learn and build!</p>
+          <Button
+            variant="outline"
+            className="hover:border-primary hover:bg-primary/10"
+            asChild
+          >
+            <a href="#" target="_blank" rel="noopener noreferrer">
+              <Github size={18} className="mr-2" />
+              View All on GitHub
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Projects;
