@@ -14,32 +14,34 @@ const MatrixRain = () => {
     canvas.height = window.innerHeight;
 
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
-    const fontSize = 14;
+    const fontSize = 16;
     const columns = Math.floor(canvas.width / fontSize);
     const drops: number[] = Array(columns).fill(1);
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = '#00FF41';
-      ctx.font = `${fontSize}px JetBrains Mono, monospace`;
 
       for (let i = 0; i < drops.length; i++) {
         const text = letters[Math.floor(Math.random() * letters.length)];
         const x = i * fontSize;
         const y = drops[i] * fontSize;
 
+        // Add variation in brightness for depth
+        const opacity = Math.random() * 0.5 + 0.5;
+        ctx.fillStyle = `rgba(0, 255, 65, ${opacity})`;
+        ctx.font = `${fontSize}px JetBrains Mono, monospace`;
         ctx.fillText(text, x, y);
 
-        if (y > canvas.height && Math.random() > 0.975) {
+        // Occasionally reset drops
+        if (y > canvas.height && Math.random() > 0.98) {
           drops[i] = 0;
         }
         drops[i]++;
       }
     };
 
-    const interval = setInterval(draw, 50);
+    const interval = setInterval(draw, 40);
 
     const handleResize = () => {
       canvas.width = window.innerWidth;
@@ -57,7 +59,7 @@ const MatrixRain = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 opacity-20"
+      className="fixed top-0 left-0 w-full h-full -z-10 opacity-30"
       aria-hidden="true"
     />
   );
