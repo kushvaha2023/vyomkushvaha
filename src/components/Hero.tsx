@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail, Download } from 'lucide-react';
 import { Button } from './ui/button';
-
 const Hero = () => {
   const [typedText, setTypedText] = useState('');
   const fullText = 'Cybersecurity, AI & Coding Enthusiast — Learning and Building.';
-
   useEffect(() => {
     let index = 0;
     const timer = setInterval(() => {
@@ -16,27 +14,30 @@ const Hero = () => {
         clearInterval(timer);
       }
     }, 50);
-
     return () => clearInterval(timer);
   }, []);
-
-  const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: '#contact', label: 'Email' },
-  ];
-
-  return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-4">
+  const socialLinks = [{
+    icon: Github,
+    href: '#',
+    label: 'GitHub'
+  }, {
+    icon: Linkedin,
+    href: '#',
+    label: 'LinkedIn'
+  }, {
+    icon: Mail,
+    href: '#contact',
+    label: 'Email'
+  }];
+  return <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-4">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left: Text Content */}
           <div className="space-y-6 animate-fade-in-up">
             <div className="space-y-2">
               <p className="text-muted-foreground font-mono text-sm md:text-base">Hello, It's me</p>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold">
-                Vyom Kushvaha
-              </h1>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold">𝕧𝕪𝕠𝕞
+𝕜𝕦𝕤𝕙𝕧𝕒𝕙𝕒</h1>
               <div className="flex items-center space-x-2">
                 <p className="text-xl md:text-2xl">And I'm a</p>
                 <span className="text-xl md:text-2xl text-neon font-semibold">Learner</span>
@@ -58,22 +59,16 @@ const Hero = () => {
 
             {/* Social Links */}
             <div className="flex items-center space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all hover:shadow-neon"
-                  aria-label={social.label}
-                  onClick={(e) => {
-                    if (social.href.startsWith('#')) {
-                      e.preventDefault();
-                      document.querySelector(social.href)?.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
+              {socialLinks.map(social => <a key={social.label} href={social.href} className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all hover:shadow-neon" aria-label={social.label} onClick={e => {
+              if (social.href.startsWith('#')) {
+                e.preventDefault();
+                document.querySelector(social.href)?.scrollIntoView({
+                  behavior: 'smooth'
+                });
+              }
+            }}>
                   <social.icon size={20} />
-                </a>
-              ))}
+                </a>)}
             </div>
 
             {/* CTA Button */}
@@ -107,8 +102,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
