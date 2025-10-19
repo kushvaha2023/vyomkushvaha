@@ -1,4 +1,4 @@
-import MatrixRain from '@/components/MatrixRain';
+import MultiverseTree from '@/components/MultiverseTree';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import Terminal from '@/components/Terminal';
@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background">
-      <MatrixRain />
+      <MultiverseTree />
       <Navigation />
       <main>
         <Hero />
