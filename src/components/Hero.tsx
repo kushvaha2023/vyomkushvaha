@@ -36,8 +36,7 @@ const Hero = () => {
           <div className="space-y-6 animate-fade-in-up">
             <div className="space-y-2">
               <p className="text-muted-foreground font-mono text-sm md:text-base">Hello, It's me</p>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold">𝕧𝕪𝕠𝕞
-𝕜𝕦𝕤𝕙𝕧𝕒𝕙𝕒</h1>
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-mono">Vyom Kushvaha</h1>
               <div className="flex items-center space-x-2">
                 <p className="text-xl md:text-2xl">And I'm a</p>
                 <span className="text-xl md:text-2xl text-neon font-semibold">Learner</span>
