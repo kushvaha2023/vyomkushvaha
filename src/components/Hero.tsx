@@ -51,7 +51,7 @@ const Hero = () => {
             </div>
 
             <p className="text-muted-foreground max-w-lg">
-              I'm a curious and analytical learner passionate about cybersecurity. I value responsibility and the drive to achieve something beyond the ordinary. As I continue learning, my goal is to work in security operations — analyzing and investigating cyber threats, finding vulnerabilities, and helping organizations stay secure.
+              Hi, I'm Vyom Kushvaha — a curious and analytical learner passionate about cybersecurity. I value responsibility and the drive to achieve something beyond the ordinary. As I continue learning, my goal is to work in security operations — analyzing and investigating cyber threats, finding vulnerabilities, and helping organizations stay secure.
             </p>
 
             {/* Social Links */}
