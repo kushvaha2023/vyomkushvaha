@@ -47,22 +47,22 @@ const Hero = () => {
           {/* Left: Text Content */}
           <div className="space-y-6 animate-fade-in-up">
             <div className="space-y-2">
-              <p className="text-muted-foreground font-mono text-sm md:text-base">Hello, It's me</p>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-mono">Vyom Kushvaha</h1>
-              <div className="flex items-center space-x-2">
-                <p className="text-xl md:text-2xl">And I'm a</p>
-                <span className="text-xl md:text-2xl text-neon font-semibold">Learner</span>
+              <p className="text-muted-foreground font-mono text-xs sm:text-sm md:text-base">Hello, It's me</p>
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold font-mono break-words">Vyom Kushvaha</h1>
+              <div className="flex flex-wrap items-center gap-2">
+                <p className="text-lg sm:text-xl md:text-2xl">And I'm a</p>
+                <span className="text-lg sm:text-xl md:text-2xl text-neon font-semibold">Learner</span>
               </div>
             </div>
 
-            <div className="h-24 md:h-20">
-              <p className="text-base md:text-lg text-muted-foreground font-mono">
+            <div className="min-h-20 md:min-h-24">
+              <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-mono break-words">
                 {typedText}
                 <span className="animate-blink">|</span>
               </p>
             </div>
 
-            <p className="text-muted-foreground max-w-lg">
+            <p className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed">
               Hi, I'm Vyom Kushvaha — a curious and analytical learner passionate about cybersecurity. I value responsibility and the drive to achieve something beyond the ordinary. As I continue learning, my goal is to work in security operations — analyzing and investigating cyber threats, finding vulnerabilities, and helping organizations stay secure.
             </p>
 
@@ -101,7 +101,7 @@ const Hero = () => {
             <img 
               src={theme === 'light' ? logoLight : logoDark}
               alt="Vyom Kushvaha Logo"
-              className="w-64 h-64 md:w-80 md:h-80 object-contain"
+              className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain"
             />
           </div>
         </div>

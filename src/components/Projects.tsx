@@ -12,26 +12,19 @@ interface Project {
 const Projects = () => {
   const projects: Project[] = [
     {
-      title: 'Password Strength Checker',
-      description:
-        'A Python-based tool that analyzes password security by checking length, complexity, and common patterns. Provides detailed feedback on password strength and suggestions for improvement.',
-      tech: ['Python', 'Regex', 'Security'],
-      githubUrl: '#',
-    },
-    {
       title: 'Portfolio Website',
       description:
         'Personal portfolio website with a hacker-inspired aesthetic. Features Matrix rain effect, interactive terminal, and responsive design. Built with modern web technologies.',
       tech: ['HTML', 'CSS', 'JavaScript', 'React'],
-      githubUrl: '#',
+      githubUrl: 'https://github.com/vyom-kushvaha',
       liveUrl: '#',
     },
     {
-      title: 'Basic AI Chatbot',
+      title: 'College Learning',
       description:
-        'Simple conversational AI chatbot built with Python and natural language processing. Demonstrates basic NLP concepts and intent recognition for answering common queries.',
-      tech: ['Python', 'NLP', 'Machine Learning'],
-      githubUrl: '#',
+        'A collection of projects and assignments from my college coursework, covering various topics in computer science, programming fundamentals, and cybersecurity concepts.',
+      tech: ['Python', 'C++', 'Data Structures', 'Algorithms'],
+      githubUrl: 'https://github.com/vyom-kushvaha',
     },
   ];
 
@@ -39,10 +32,10 @@ const Projects = () => {
     <section id="projects" className="py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Featured <span className="text-neon">Projects</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4 leading-relaxed">
             A selection of projects I've built while learning cybersecurity, AI, and software development. Each
             project represents a step in my learning journey.
           </p>
@@ -108,17 +101,9 @@ const Projects = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-muted-foreground mb-4">More projects coming as I learn and build!</p>
-          <Button
-            variant="outline"
-            className="hover:border-primary hover:bg-primary/10"
-            asChild
-          >
-            <a href="#" target="_blank" rel="noopener noreferrer">
-              <Github size={18} className="mr-2" />
-              View All on GitHub
-            </a>
-          </Button>
+          <p className="text-muted-foreground text-sm md:text-base font-mono italic">
+            More projects coming soon...
+          </p>
         </div>
       </div>
     </section>

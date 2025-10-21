@@ -62,49 +62,49 @@ const Contact = () => {
     <section id="contact" className="py-20 px-4 bg-muted/20">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Get In <span className="text-neon">Touch</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             Want to collaborate or say hi? Feel free to reach out using the form below or via email.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 animate-fade-in-up">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 animate-fade-in-up">
           {/* Contact Info */}
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             <div>
-              <h3 className="text-xl font-bold mb-6">Contact Information</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-4 md:mb-6">Contact Information</h3>
               <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
-                    <Mail className="text-primary" size={20} />
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className="p-2 sm:p-3 rounded-lg bg-primary/10 border border-primary/20 flex-shrink-0">
+                    <Mail className="text-primary" size={18} />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Email</h4>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Email</h4>
                     <a
                       href="mailto:vyomkushvaha@gmail.com"
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors break-all"
                     >
                       vyomkushvaha@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="p-3 rounded-lg bg-accent/10 border border-accent/20">
-                    <MapPin className="text-accent" size={20} />
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div className="p-2 sm:p-3 rounded-lg bg-accent/10 border border-accent/20 flex-shrink-0">
+                    <MapPin className="text-accent" size={18} />
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-foreground mb-1">Location</h4>
-                    <p className="text-muted-foreground">Anand, India</p>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Location</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Anand, India</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="terminal p-6">
-              <div className="space-y-2 font-mono text-sm">
+            <div className="terminal p-4 sm:p-6">
+              <div className="space-y-2 font-mono text-xs sm:text-sm">
                 <div className="flex items-center space-x-2">
                   <span className="terminal-prompt">$</span>
                   <span className="text-foreground">cat contact.txt</span>
@@ -122,9 +122,9 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="card-glow">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground mb-2">
                   Name
                 </label>
                 <Input
@@ -134,13 +134,13 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Your name"
-                  className="bg-background border-border focus:border-primary"
+                  className="bg-background border-border focus:border-primary text-sm sm:text-base w-full"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-foreground mb-2">
                   Email
                 </label>
                 <Input
@@ -150,13 +150,13 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="your.email@example.com"
-                  className="bg-background border-border focus:border-primary"
+                  className="bg-background border-border focus:border-primary text-sm sm:text-base w-full"
                   required
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-foreground mb-2">
                   Message
                 </label>
                 <Textarea
@@ -166,21 +166,21 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder="Your message..."
                   rows={5}
-                  className="bg-background border-border focus:border-primary resize-none"
+                  className="bg-background border-border focus:border-primary resize-none text-sm sm:text-base w-full"
                   required
                 />
               </div>
 
               <Button
                 type="submit"
-                className="w-full btn-neon"
+                className="w-full btn-neon text-sm sm:text-base"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   'Sending...'
                 ) : (
                   <>
-                    <Send size={18} className="mr-2" />
+                    <Send size={16} className="mr-2" />
                     Send Message
                   </>
                 )}
