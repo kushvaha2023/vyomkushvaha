@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail, Download, Instagram } from 'lucide-react';
 import { Button } from './ui/button';
+import { useTheme } from 'next-themes';
+import logoLight from '@/assets/logo-light.png';
+import logoDark from '@/assets/logo-dark.png';
 const Hero = () => {
+  const { theme } = useTheme();
   const [typedText, setTypedText] = useState('');
   const fullText = 'Cybersecurity, AI & Coding Enthusiast — Learning and Building.';
   useEffect(() => {
@@ -92,25 +96,13 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right: Pixel Art / Logo */}
+          {/* Right: Logo */}
           <div className="flex justify-center items-center animate-fade-in animation-delay-400">
-            <div className="relative">
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-glow-pulse" />
-              
-              {/* Pixel Art Container */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 border-2 border-primary/30 rounded-full flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <div className="font-mono text-6xl md:text-8xl text-neon animate-glow-pulse">
-                    {'</>'}
-                  </div>
-                  <div className="space-y-1">
-                    <div className="text-xs md:text-sm text-muted-foreground font-mono">$ whoami</div>
-                    <div className="text-sm md:text-base text-primary font-mono">vyom_kushvaha</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img 
+              src={theme === 'light' ? logoLight : logoDark}
+              alt="Vyom Kushvaha Logo"
+              className="w-64 h-64 md:w-80 md:h-80 object-contain"
+            />
           </div>
         </div>
       </div>
