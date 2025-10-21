@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Github, Linkedin, Mail, Download } from 'lucide-react';
+import { Github, Linkedin, Mail, Download, Instagram } from 'lucide-react';
 import { Button } from './ui/button';
 const Hero = () => {
   const [typedText, setTypedText] = useState('');
@@ -18,16 +18,24 @@ const Hero = () => {
   }, []);
   const socialLinks = [{
     icon: Github,
-    href: '#',
-    label: 'GitHub'
+    href: 'https://github.com/vyom-kushvaha',
+    label: 'GitHub',
+    external: true
+  }, {
+    icon: Instagram,
+    href: 'https://www.instagram.com/vyom_kushvaha_?igsh=MWlmY3hiN3Z5YnE2YQ==',
+    label: 'Instagram',
+    external: true
   }, {
     icon: Linkedin,
-    href: '#',
-    label: 'LinkedIn'
+    href: 'https://www.linkedin.com/in/vyom-kushvaha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+    label: 'LinkedIn',
+    external: true
   }, {
     icon: Mail,
     href: '#contact',
-    label: 'Email'
+    label: 'Email',
+    external: false
   }];
   return <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-4">
       <div className="container mx-auto">
@@ -56,14 +64,21 @@ const Hero = () => {
 
             {/* Social Links */}
             <div className="flex items-center space-x-4">
-              {socialLinks.map(social => <a key={social.label} href={social.href} className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all hover:shadow-neon" aria-label={social.label} onClick={e => {
-              if (social.href.startsWith('#')) {
-                e.preventDefault();
-                document.querySelector(social.href)?.scrollIntoView({
-                  behavior: 'smooth'
-                });
-              }
-            }}>
+              {socialLinks.map(social => <a 
+                key={social.label} 
+                href={social.href} 
+                target={social.external ? "_blank" : undefined}
+                rel={social.external ? "noopener noreferrer" : undefined}
+                className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all hover:shadow-neon hover:scale-110 cursor-pointer" 
+                aria-label={social.label} 
+                onClick={e => {
+                  if (social.href.startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(social.href)?.scrollIntoView({
+                      behavior: 'smooth'
+                    });
+                  }
+                }}>
                   <social.icon size={20} />
                 </a>)}
             </div>

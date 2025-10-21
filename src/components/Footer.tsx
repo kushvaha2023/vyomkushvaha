@@ -1,12 +1,13 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, Instagram } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Mail, href: '#contact', label: 'Email' },
+    { icon: Github, href: 'https://github.com/vyom-kushvaha', label: 'GitHub', external: true },
+    { icon: Instagram, href: 'https://www.instagram.com/vyom_kushvaha_?igsh=MWlmY3hiN3Z5YnE2YQ==', label: 'Instagram', external: true },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/vyom-kushvaha?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', label: 'LinkedIn', external: true },
+    { icon: Mail, href: '#contact', label: 'Email', external: false },
   ];
 
   return (
@@ -53,7 +54,9 @@ const Footer = () => {
                 <a
                   key={social.label}
                   href={social.href}
-                  className="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all"
+                  target={social.external ? "_blank" : undefined}
+                  rel={social.external ? "noopener noreferrer" : undefined}
+                  className="w-10 h-10 rounded-lg border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/10 transition-all hover:scale-110 cursor-pointer"
                   aria-label={social.label}
                   onClick={(e) => {
                     if (social.href.startsWith('#')) {
