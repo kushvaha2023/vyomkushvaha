@@ -68,6 +68,62 @@
     
     --radius: 0.25rem;
   }
+
+  .light {
+    /* Core Colors - White + Blue */
+    --background: 0 0% 100%;
+    --foreground: 217 91% 20%;
+    
+    /* Card & Surface */
+    --card: 0 0% 98%;
+    --card-foreground: 217 91% 20%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 91% 20%;
+    
+    /* Primary - Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 217 91% 45%;
+    
+    /* Secondary - Light Blue */
+    --secondary: 217 50% 90%;
+    --secondary-foreground: 217 91% 20%;
+    
+    /* Muted */
+    --muted: 217 30% 94%;
+    --muted-foreground: 217 30% 40%;
+    
+    /* Accent - Blue Accent */
+    --accent: 210 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Destructive */
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Border & Input */
+    --border: 217 30% 80%;
+    --input: 217 30% 90%;
+    --ring: 217 91% 60%;
+    
+    /* Terminal Colors */
+    --terminal-bg: 217 40% 97%;
+    --terminal-text: 217 91% 30%;
+    --terminal-prompt: 217 91% 50%;
+    --terminal-comment: 217 40% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60% / 0.1), hsl(217 91% 45% / 0.05));
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(217 30% 95%) 100%);
+    --gradient-glow: radial-gradient(circle, hsl(217 91% 60% / 0.2) 0%, transparent 70%);
+    
+    /* Shadows & Effects */
+    --shadow-neon: 0 0 20px hsl(217 91% 60% / 0.3), 0 0 40px hsl(217 91% 60% / 0.2);
+    --shadow-card: 0 4px 20px hsl(217 91% 60% / 0.1);
+    --glow-text: 0 0 10px hsl(217 91% 60% / 0.6);
+  }
 }
 
 @layer base {
