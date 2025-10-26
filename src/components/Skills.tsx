@@ -41,18 +41,19 @@ const Skills = () => {
     },
   ];
 
-  const getProgressBarColor = (level: string) => {
+  const getLevelColor = (level: string) => {
+    // Light mode: respective colors, Dark mode: green
     switch (level) {
       case 'learning':
-        return 'bg-[#3b82f6]'; // Blue
+        return 'text-[#3b82f6] dark:text-[#22c55e]'; // Blue in light, Green in dark
       case 'familiar':
-        return 'bg-[#eab308]'; // Yellow
+        return 'text-[#eab308] dark:text-[#22c55e]'; // Yellow in light, Green in dark
       case 'intermediate':
-        return 'bg-[#22c55e]'; // Green
+        return 'text-[#22c55e] dark:text-[#22c55e]'; // Green in both
       case 'advanced':
-        return 'bg-[#a855f7]'; // Purple
+        return 'text-[#a855f7] dark:text-[#22c55e]'; // Purple in light, Green in dark
       default:
-        return 'bg-primary';
+        return 'text-foreground';
     }
   };
 
@@ -84,14 +85,14 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="space-y-10 animate-fade-in-up">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in-up">
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={category.title}
               className="card-glow bg-card/50 backdrop-blur-sm"
               style={{ animationDelay: `${categoryIndex * 100}ms` }}
             >
-              <h3 className="text-xl sm:text-2xl font-bold mb-6 text-foreground border-b border-border pb-3">
+              <h3 className="text-lg sm:text-xl font-bold mb-6 text-foreground border-b border-border pb-3">
                 {category.title}
               </h3>
               <div className="space-y-5">
@@ -102,19 +103,20 @@ const Skills = () => {
                     style={{ animationDelay: `${(categoryIndex * 100) + (skillIndex * 50)}ms` }}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-semibold text-foreground text-sm sm:text-base">
+                      <h4 className="font-semibold text-foreground text-sm">
                         {skill.name}
                       </h4>
-                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-muted/50 text-skill-label transition-colors">
+                      <span className={`text-xs font-mono px-2.5 py-1 rounded-full bg-muted/50 transition-colors ${getLevelColor(skill.level)}`}>
                         {getLevelText(skill.level)}
                       </span>
                     </div>
                     <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-muted/30">
                       <div
-                        className={`h-full transition-all duration-500 ease-out ${getProgressBarColor(skill.level)} group-hover:opacity-90`}
+                        className="h-full transition-all duration-700 ease-out bg-[#3b82f6] dark:bg-[#22c55e] group-hover:opacity-90 animate-fade-in"
                         style={{ 
                           width: `${skill.percentage}%`,
-                          boxShadow: '0 0 10px rgba(0,0,0,0.1)'
+                          boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+                          transitionDelay: `${skillIndex * 100}ms`
                         }}
                       />
                     </div>
