@@ -37,6 +37,9 @@
     --accent: 180 100% 65%;
     --accent-foreground: 0 0% 0%;
     
+    /* Skill Label - Green for dark mode */
+    --skill-label: 142 76% 36%;
+    
     /* Destructive */
     --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
@@ -98,6 +101,9 @@
     /* Accent - Blue Accent */
     --accent: 210 100% 60%;
     --accent-foreground: 0 0% 100%;
+    
+    /* Skill Label - Blue for light mode */
+    --skill-label: 217 91% 60%;
     
     /* Destructive */
     --destructive: 0 100% 50%;

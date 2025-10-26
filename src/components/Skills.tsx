@@ -1,47 +1,71 @@
-import { Shield, Brain, Code2, Network, Terminal as TerminalIcon, Database } from 'lucide-react';
+import { Progress } from './ui/progress';
 
 interface Skill {
   name: string;
-  level: 'learning' | 'intermediate' | 'familiar';
-  icon: typeof Shield;
+  level: 'learning' | 'familiar' | 'intermediate' | 'advanced';
+  percentage: number;
+}
+
+interface SkillCategory {
+  title: string;
+  skills: Skill[];
 }
 
 const Skills = () => {
-  const skills: Skill[] = [
-    { name: 'Cybersecurity Basics', level: 'intermediate', icon: Shield },
-    { name: 'Networking', level: 'intermediate', icon: Network },
-    { name: 'Ethical Hacking', level: 'learning', icon: TerminalIcon },
-    { name: 'Python', level: 'intermediate', icon: Code2 },
-    { name: 'JavaScript', level: 'intermediate', icon: Code2 },
-    { name: 'C++', level: 'familiar', icon: Code2 },
-    { name: 'AI/ML Basics', level: 'learning', icon: Brain },
-    { name: 'Kali Linux', level: 'intermediate', icon: TerminalIcon },
-    { name: 'Git/GitHub', level: 'intermediate', icon: Database },
-    { name: 'HTML/CSS', level: 'familiar', icon: Code2 },
-    { name: 'VS Code', level: 'familiar', icon: Code2 },
+  const skillCategories: SkillCategory[] = [
+    {
+      title: 'Programming Languages',
+      skills: [
+        { name: 'Python', level: 'intermediate', percentage: 75 },
+        { name: 'C', level: 'intermediate', percentage: 70 },
+        { name: 'Bash/Shell Scripting', level: 'familiar', percentage: 60 },
+      ],
+    },
+    {
+      title: 'Cybersecurity',
+      skills: [
+        { name: 'Network Security', level: 'intermediate', percentage: 75 },
+        { name: 'Ethical Hacking', level: 'familiar', percentage: 65 },
+        { name: 'Vulnerability Assessment', level: 'intermediate', percentage: 70 },
+        { name: 'Security Analysis', level: 'familiar', percentage: 60 },
+      ],
+    },
+    {
+      title: 'Tools & Technologies',
+      skills: [
+        { name: 'Kali Linux', level: 'intermediate', percentage: 75 },
+        { name: 'Wireshark', level: 'familiar', percentage: 65 },
+        { name: 'Nmap', level: 'intermediate', percentage: 70 },
+        { name: 'Git/GitHub', level: 'intermediate', percentage: 75 },
+      ],
+    },
   ];
 
-  const getLevelColor = (level: string) => {
+  const getProgressBarColor = (level: string) => {
     switch (level) {
-      case 'familiar':
-        return 'border-primary bg-primary/10';
-      case 'intermediate':
-        return 'border-accent bg-accent/10';
       case 'learning':
-        return 'border-muted-foreground bg-muted';
+        return 'bg-[#3b82f6]'; // Blue
+      case 'familiar':
+        return 'bg-[#eab308]'; // Yellow
+      case 'intermediate':
+        return 'bg-[#22c55e]'; // Green
+      case 'advanced':
+        return 'bg-[#a855f7]'; // Purple
       default:
-        return 'border-border';
+        return 'bg-primary';
     }
   };
 
   const getLevelText = (level: string) => {
     switch (level) {
+      case 'learning':
+        return 'Learning';
       case 'familiar':
         return 'Familiar';
       case 'intermediate':
         return 'Intermediate';
-      case 'learning':
-        return 'Learning';
+      case 'advanced':
+        return 'Advanced';
       default:
         return '';
     }
@@ -56,56 +80,68 @@ const Skills = () => {
           </h2>
           <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4 leading-relaxed">
             A collection of technologies and tools I'm learning and working with. Constantly expanding my knowledge
-            in cybersecurity, AI, and software development.
+            in cybersecurity and software development.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in-up">
-          {skills.map((skill, index) => {
-            const Icon = skill.icon;
-            return (
-              <div
-                key={skill.name}
-                className={`card-glow group hover:scale-105 ${getLevelColor(skill.level)}`}
-                style={{ animationDelay: `${index * 50}ms` }}
-              >
-                <div className="flex items-start space-x-4">
-                  <div className="p-3 rounded-lg bg-background/50 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="text-primary" size={24} />
+        <div className="space-y-10 animate-fade-in-up">
+          {skillCategories.map((category, categoryIndex) => (
+            <div
+              key={category.title}
+              className="card-glow bg-card/50 backdrop-blur-sm"
+              style={{ animationDelay: `${categoryIndex * 100}ms` }}
+            >
+              <h3 className="text-xl sm:text-2xl font-bold mb-6 text-foreground border-b border-border pb-3">
+                {category.title}
+              </h3>
+              <div className="space-y-5">
+                {category.skills.map((skill, skillIndex) => (
+                  <div
+                    key={skill.name}
+                    className="group"
+                    style={{ animationDelay: `${(categoryIndex * 100) + (skillIndex * 50)}ms` }}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-semibold text-foreground text-sm sm:text-base">
+                        {skill.name}
+                      </h4>
+                      <span className="text-xs font-mono px-3 py-1 rounded-full bg-muted/50 text-skill-label transition-colors">
+                        {getLevelText(skill.level)}
+                      </span>
+                    </div>
+                    <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-muted/30">
+                      <div
+                        className={`h-full transition-all duration-500 ease-out ${getProgressBarColor(skill.level)} group-hover:opacity-90`}
+                        style={{ 
+                          width: `${skill.percentage}%`,
+                          boxShadow: '0 0 10px rgba(0,0,0,0.1)'
+                        }}
+                      />
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-semibold text-foreground mb-1">{skill.name}</h3>
-                    <span
-                      className={`text-xs font-mono px-2 py-1 rounded ${
-                        skill.level === 'familiar'
-                          ? 'bg-primary/20 text-primary'
-                          : skill.level === 'intermediate'
-                          ? 'bg-accent/20 text-accent'
-                          : 'bg-muted-foreground/20 text-muted-foreground'
-                      }`}
-                    >
-                      {getLevelText(skill.level)}
-                    </span>
-                  </div>
-                </div>
+                ))}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
 
         {/* Legend */}
-        <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm">
+        <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm animate-fade-in">
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-primary border-2 border-primary" />
+            <div className="w-4 h-4 rounded-full bg-[#3b82f6]" />
+            <span className="text-muted-foreground">Learning</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-4 rounded-full bg-[#eab308]" />
             <span className="text-muted-foreground">Familiar</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-accent border-2 border-accent" />
+            <div className="w-4 h-4 rounded-full bg-[#22c55e]" />
             <span className="text-muted-foreground">Intermediate</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-muted border-2 border-muted-foreground" />
-            <span className="text-muted-foreground">Learning</span>
+            <div className="w-4 h-4 rounded-full bg-[#a855f7]" />
+            <span className="text-muted-foreground">Advanced</span>
           </div>
         </div>
       </div>
