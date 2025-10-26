@@ -4,6 +4,7 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { toast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,9 @@ const Contact = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Initialize EmailJS
+  emailjs.init('TP-iSknJTuHefrwdL');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
@@ -24,8 +28,13 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Trim inputs
+    const trimmedName = formData.name.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedMessage = formData.message.trim();
+
     // Basic validation
-    if (!formData.name || !formData.email || !formData.message) {
+    if (!trimmedName || !trimmedEmail || !trimmedMessage) {
       toast({
         title: 'Error',
         description: 'Please fill in all fields',
@@ -35,9 +44,40 @@ const Contact = () => {
       return;
     }
 
+    // Length validation
+    if (trimmedName.length > 100) {
+      toast({
+        title: 'Error',
+        description: 'Name must be less than 100 characters',
+        variant: 'destructive',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (trimmedEmail.length > 255) {
+      toast({
+        title: 'Error',
+        description: 'Email must be less than 255 characters',
+        variant: 'destructive',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
+    if (trimmedMessage.length > 1000) {
+      toast({
+        title: 'Error',
+        description: 'Message must be less than 1000 characters',
+        variant: 'destructive',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
+    if (!emailRegex.test(trimmedEmail)) {
       toast({
         title: 'Error',
         description: 'Please enter a valid email address',
@@ -47,15 +87,36 @@ const Contact = () => {
       return;
     }
 
-    // Simulate form submission
-    setTimeout(() => {
+    // Send email via EmailJS
+    try {
+      const templateParams = {
+        from_name: trimmedName,
+        from_email: trimmedEmail,
+        message: trimmedMessage,
+        to_email: 'vyomkushvaha@gmail.com',
+      };
+
+      await emailjs.send(
+        'service_ouu40ru',
+        'template_s1twuir',
+        templateParams
+      );
+
       toast({
         title: 'Message Sent!',
         description: "Thanks for reaching out. I'll get back to you soon!",
       });
       setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: 'Failed to Send',
+        description: 'Please try again or email me directly at vyomkushvaha@gmail.com',
+        variant: 'destructive',
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
