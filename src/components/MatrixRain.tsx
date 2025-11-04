@@ -21,14 +21,14 @@ const MatrixRain = () => {
     const nums = '0123456789';
     const chars = katakana + latin + nums;
     
-    const fontSize = 16;
+    const fontSize = 18;
     const columns = Math.floor(canvas.width / fontSize);
     const drops: number[] = Array(columns).fill(1);
 
     // Theme-aware colors
     const isDark = theme === 'dark';
-    const bgColor = isDark ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.08)';
-    const textColorBase = isDark ? '0, 255, 65' : '60, 60, 60'; // Green for dark, dark gray for light
+    const bgColor = isDark ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)';
+    const textColorBase = isDark ? '0, 255, 65' : '40, 40, 40'; // Green for dark, dark gray for light
 
     const draw = () => {
       ctx.fillStyle = bgColor;
@@ -40,13 +40,13 @@ const MatrixRain = () => {
         const y = drops[i] * fontSize;
 
         // Add variation in brightness for depth and glow effect
-        const opacity = Math.random() * 0.5 + 0.5;
+        const opacity = Math.random() * 0.3 + 0.7;
         ctx.fillStyle = `rgba(${textColorBase}, ${opacity})`;
         ctx.font = `${fontSize}px JetBrains Mono, monospace`;
         
         // Add subtle glow in dark mode
         if (isDark) {
-          ctx.shadowBlur = 8;
+          ctx.shadowBlur = 10;
           ctx.shadowColor = `rgba(0, 255, 65, ${opacity * 0.6})`;
         } else {
           ctx.shadowBlur = 0;
@@ -62,7 +62,7 @@ const MatrixRain = () => {
       }
     };
 
-    const interval = setInterval(draw, 40);
+    const interval = setInterval(draw, 35);
 
     const handleResize = () => {
       canvas.width = window.innerWidth;
@@ -80,7 +80,7 @@ const MatrixRain = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 opacity-20 dark:opacity-30"
+      className="fixed top-0 left-0 w-full h-full -z-10 opacity-50 dark:opacity-60"
       aria-hidden="true"
     />
   );
