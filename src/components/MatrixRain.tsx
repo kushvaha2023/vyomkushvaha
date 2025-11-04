@@ -1,7 +1,9 @@
 import { useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
 
 const MatrixRain = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,24 +15,43 @@ const MatrixRain = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
+    // Include Japanese katakana characters for authentic Matrix effect
+    const katakana = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const nums = '0123456789';
+    const chars = katakana + latin + nums;
+    
     const fontSize = 16;
     const columns = Math.floor(canvas.width / fontSize);
     const drops: number[] = Array(columns).fill(1);
 
+    // Theme-aware colors
+    const isDark = theme === 'dark';
+    const bgColor = isDark ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.08)';
+    const textColorBase = isDark ? '0, 255, 65' : '60, 60, 60'; // Green for dark, dark gray for light
+
     const draw = () => {
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
+      ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
+        const text = chars[Math.floor(Math.random() * chars.length)];
         const x = i * fontSize;
         const y = drops[i] * fontSize;
 
-        // Add variation in brightness for depth
+        // Add variation in brightness for depth and glow effect
         const opacity = Math.random() * 0.5 + 0.5;
-        ctx.fillStyle = `rgba(0, 255, 65, ${opacity})`;
+        ctx.fillStyle = `rgba(${textColorBase}, ${opacity})`;
         ctx.font = `${fontSize}px JetBrains Mono, monospace`;
+        
+        // Add subtle glow in dark mode
+        if (isDark) {
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = `rgba(0, 255, 65, ${opacity * 0.6})`;
+        } else {
+          ctx.shadowBlur = 0;
+        }
+        
         ctx.fillText(text, x, y);
 
         // Occasionally reset drops
@@ -54,12 +75,12 @@ const MatrixRain = () => {
       clearInterval(interval);
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [theme]);
 
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full -z-10 opacity-30"
+      className="fixed top-0 left-0 w-full h-full -z-10 opacity-20 dark:opacity-30"
       aria-hidden="true"
     />
   );
