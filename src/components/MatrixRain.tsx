@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
+import darkBgImage from '@/assets/dark-bg.png';
 
 const MatrixRain = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -30,9 +31,31 @@ const MatrixRain = () => {
     const bgColor = isDark ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)';
     const textColorBase = isDark ? '0, 255, 65' : '40, 40, 40'; // Green for dark, dark gray for light
 
+    // Load background image for dark mode
+    let backgroundImage: HTMLImageElement | null = null;
+    let imageLoaded = false;
+
+    if (isDark) {
+      backgroundImage = new Image();
+      backgroundImage.src = darkBgImage;
+      backgroundImage.onload = () => {
+        imageLoaded = true;
+      };
+    }
+
     const draw = () => {
-      ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Draw background
+      if (isDark && imageLoaded && backgroundImage) {
+        // Draw the background image scaled to canvas size
+        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+        // Add dark overlay for better text readability
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      } else {
+        // Light mode or image not loaded yet - use solid color
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
 
       for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
