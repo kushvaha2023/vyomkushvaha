@@ -139,12 +139,31 @@
 
   html {
     @apply bg-background;
+    position: relative;
+  }
+  
+  html::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .dark html::before {
+    background-image: url('/src/assets/dark-bg.png');
   }
 
   body {
     @apply text-foreground font-sans antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: transparent;
+    position: relative;
   }
   
   h1, h2, h3, h4, h5, h6 {
