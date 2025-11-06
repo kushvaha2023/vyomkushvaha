@@ -5,7 +5,9 @@ import { useTheme } from 'next-themes';
 import logoLight from '@/assets/logo-light.png';
 import hackerHero from '@/assets/hacker-hero.png';
 const Hero = () => {
-  const { theme } = useTheme();
+  const {
+    theme
+  } = useTheme();
   const [typedText, setTypedText] = useState('');
   const fullText = 'Cybersecurity, AI & Coding Enthusiast — Learning and Building.';
   useEffect(() => {
@@ -47,8 +49,8 @@ const Hero = () => {
           {/* Left: Text Content */}
           <div className="space-y-6 animate-fade-in-up">
             <div className="space-y-2">
-              <p className="text-muted-foreground font-mono text-xs sm:text-sm md:text-base">Hello, It's me</p>
-              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold font-mono break-words">Vyom Kushvaha</h1>
+              <p className="font-mono text-xs sm:text-sm text-stone-950 md:text-base">Hello, It's me</p>
+              <h1 className="text-3xl sm:text-4xl lg:text-7xl font-mono break-words font-extrabold md:text-7xl">VYOM KUSHVAHA</h1>
               <div className="flex flex-wrap items-center gap-2">
                 <p className="text-lg sm:text-xl md:text-2xl">And I'm a</p>
                 <span className="text-lg sm:text-xl md:text-2xl text-neon font-semibold">Learner</span>
@@ -56,33 +58,26 @@ const Hero = () => {
             </div>
 
             <div className="min-h-20 md:min-h-24">
-              <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-mono break-words">
+              <p className="text-sm sm:text-base font-mono break-words text-zinc-950 md:text-lg my-0 py-[5px]">
                 {typedText}
                 <span className="animate-blink">|</span>
               </p>
             </div>
 
-            <p className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed">
+            <p className="text-sm max-w-lg leading-relaxed text-gray-950 sm:text-base my-0 py-0">
               Hi, I'm Vyom Kushvaha — a curious and analytical learner passionate about cybersecurity. I value responsibility and the drive to achieve something beyond the ordinary. As I continue learning, my goal is to work in security operations — analyzing and investigating cyber threats, finding vulnerabilities, and helping organizations stay secure.
             </p>
 
             {/* Social Links */}
             <div className="flex items-center space-x-4">
-              {socialLinks.map(social => <a 
-                key={social.label} 
-                href={social.href} 
-                target={social.external ? "_blank" : undefined}
-                rel={social.external ? "noopener noreferrer" : undefined}
-                className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all hover:shadow-neon hover:scale-110 cursor-pointer" 
-                aria-label={social.label} 
-                onClick={e => {
-                  if (social.href.startsWith('#')) {
-                    e.preventDefault();
-                    document.querySelector(social.href)?.scrollIntoView({
-                      behavior: 'smooth'
-                    });
-                  }
-                }}>
+              {socialLinks.map(social => <a key={social.label} href={social.href} target={social.external ? "_blank" : undefined} rel={social.external ? "noopener noreferrer" : undefined} className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-all hover:shadow-neon hover:scale-110 cursor-pointer" aria-label={social.label} onClick={e => {
+              if (social.href.startsWith('#')) {
+                e.preventDefault();
+                document.querySelector(social.href)?.scrollIntoView({
+                  behavior: 'smooth'
+                });
+              }
+            }}>
                   <social.icon size={20} />
                 </a>)}
             </div>
@@ -98,11 +93,7 @@ const Hero = () => {
 
           {/* Right: Logo */}
           <div className="flex justify-center items-center animate-fade-in animation-delay-400">
-            <img 
-              src={theme === 'light' ? logoLight : hackerHero}
-              alt="Vyom Kushvaha Logo"
-              className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain"
-            />
+            <img src={theme === 'light' ? logoLight : hackerHero} alt="Vyom Kushvaha Logo" className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain" />
           </div>
         </div>
       </div>
