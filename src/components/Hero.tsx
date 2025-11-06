@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Download, Instagram } from 'lucide-react';
 import { Button } from './ui/button';
 import { useTheme } from 'next-themes';
 import logoLight from '@/assets/logo-light.png';
-import logoDark from '@/assets/logo-dark.png';
+import hackerHero from '@/assets/hacker-hero.png';
 const Hero = () => {
   const { theme } = useTheme();
   const [typedText, setTypedText] = useState('');
@@ -99,7 +99,7 @@ const Hero = () => {
           {/* Right: Logo */}
           <div className="flex justify-center items-center animate-fade-in animation-delay-400">
             <img 
-              src={theme === 'light' ? logoLight : logoDark}
+              src={theme === 'light' ? logoLight : hackerHero}
               alt="Vyom Kushvaha Logo"
               className="w-48 h-48 sm:w-56 sm:h-56 md:w-72 md:h-72 lg:w-80 lg:h-80 object-contain"
             />
