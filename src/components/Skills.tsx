@@ -42,16 +42,16 @@ const Skills = () => {
   ];
 
   const getLevelColor = (level: string) => {
-    // Light mode: respective colors, Dark mode: green
+    // Same colors in both light and dark modes
     switch (level) {
       case 'learning':
-        return 'text-[#3b82f6] dark:text-[#22c55e]'; // Blue in light, Green in dark
+        return 'text-[#1E90FF]'; // Blue
       case 'familiar':
-        return 'text-[#eab308] dark:text-[#22c55e]'; // Yellow in light, Green in dark
+        return 'text-[#FFA500]'; // Orange
       case 'intermediate':
-        return 'text-[#22c55e] dark:text-[#22c55e]'; // Green in both
+        return 'text-[#32CD32]'; // Green
       case 'advanced':
-        return 'text-[#a855f7] dark:text-[#22c55e]'; // Purple in light, Green in dark
+        return 'text-[#8A2BE2]'; // Purple
       default:
         return 'text-foreground';
     }
