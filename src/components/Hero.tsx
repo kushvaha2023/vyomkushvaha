@@ -47,7 +47,7 @@ const Hero = () => {
           {/* Left: Text Content */}
           <div className="space-y-6 animate-fade-in-up">
             <div className="space-y-2">
-              <p className="text-muted-foreground font-mono text-xs sm:text-sm md:text-base">Hello, It's me</p>
+              <p className="content-text font-mono text-xs sm:text-sm md:text-base">Hello, It's me</p>
               <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold font-futuretech break-words">Vyom Kushvaha</h1>
               <div className="flex flex-wrap items-center gap-2">
                 <p className="text-lg sm:text-xl md:text-2xl">And I'm a</p>
@@ -56,13 +56,13 @@ const Hero = () => {
             </div>
 
             <div className="min-h-20 md:min-h-24">
-              <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-mono break-words">
+              <p className="content-text text-sm sm:text-base md:text-lg font-mono break-words">
                 {typedText}
                 <span className="animate-blink">|</span>
               </p>
             </div>
 
-            <p className="text-sm sm:text-base text-muted-foreground max-w-lg leading-relaxed">
+            <p className="content-text text-sm sm:text-base max-w-lg leading-relaxed">
               Hi, I'm Vyom Kushvaha — a curious and analytical learner passionate about cybersecurity. I value responsibility and the drive to achieve something beyond the ordinary. As I continue learning, my goal is to work in security operations — analyzing and investigating cyber threats, finding vulnerabilities, and helping organizations stay secure.
             </p>
 

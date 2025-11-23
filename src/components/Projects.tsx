@@ -35,7 +35,7 @@ const Projects = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Featured <span className="text-neon">Projects</span>
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4 leading-relaxed">
+          <p className="content-text text-sm sm:text-base max-w-2xl mx-auto px-4 leading-relaxed">
             A selection of projects I've built while learning cybersecurity, AI, and software development. Each
             project represents a step in my learning journey.
           </p>
@@ -101,7 +101,7 @@ const Projects = () => {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-muted-foreground text-sm md:text-base font-mono italic">
+          <p className="content-text text-sm md:text-base font-mono italic">
             More projects coming soon...
           </p>
         </div>

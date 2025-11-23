@@ -25,9 +25,9 @@ const MatrixRain = () => {
     const columns = Math.floor(canvas.width / fontSize);
     const drops: number[] = Array(columns).fill(1);
 
-    // Theme-aware colors
+    // Theme-aware colors - pure black background in dark mode
     const isDark = theme === 'dark';
-    const bgColor = isDark ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.05)';
+    const bgColor = isDark ? 'rgba(0, 0, 0, 1)' : 'rgba(255, 255, 255, 0.05)';
     const textColorBase = isDark ? '0, 255, 65' : '40, 40, 40'; // Green for dark, dark gray for light
 
     const draw = () => {
