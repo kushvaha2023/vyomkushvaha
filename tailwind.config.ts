@@ -53,6 +53,7 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'Courier New', 'monospace'],
+        futuretech: ['FutureTech', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
