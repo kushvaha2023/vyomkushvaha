@@ -16,17 +16,17 @@
 
 @layer base {
   :root {
-    /* Core Colors - Pure Black + Matrix Green */
+    /* Core Colors - Pure Black + Pure White Text */
     --background: 0 0% 0%;
-    --foreground: 120 100% 50%;
+    --foreground: 0 0% 100%;
     
     /* Card & Surface */
     --card: 120 20% 5%;
-    --card-foreground: 120 100% 50%;
+    --card-foreground: 0 0% 100%;
     
     /* Popover */
     --popover: 120 20% 5%;
-    --popover-foreground: 120 100% 50%;
+    --popover-foreground: 0 0% 100%;
     
     /* Primary - Neon Green */
     --primary: 120 100% 50%;
@@ -39,7 +39,7 @@
     
     /* Muted */
     --muted: 120 20% 8%;
-    --muted-foreground: 120 50% 40%;
+    --muted-foreground: 0 0% 100%;
     
     /* Accent - Bright Cyber Cyan */
     --accent: 180 100% 65%;
@@ -81,17 +81,17 @@
   }
 
   .light {
-    /* Core Colors - White + Blue */
+    /* Core Colors - White + Pure Black Text */
     --background: 0 0% 100%;
-    --foreground: 217 91% 20%;
+    --foreground: 0 0% 0%;
     
     /* Card & Surface */
     --card: 0 0% 98%;
-    --card-foreground: 217 91% 20%;
+    --card-foreground: 0 0% 0%;
     
     /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 217 91% 20%;
+    --popover-foreground: 0 0% 0%;
     
     /* Primary - Blue */
     --primary: 217 91% 60%;
@@ -104,7 +104,7 @@
     
     /* Muted */
     --muted: 217 30% 94%;
-    --muted-foreground: 217 30% 40%;
+    --muted-foreground: 0 0% 0%;
     
     /* Accent - Blue Accent */
     --accent: 210 100% 60%;
@@ -164,7 +164,7 @@
   }
   
   .dark html::before {
-    background-image: url('/src/assets/dark-bg.png');
+    background: #000000;
   }
 
   body {
@@ -172,10 +172,15 @@
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     background: transparent;
     position: relative;
+    font-weight: 700;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight;
+  }
+  
+  p {
+    @apply font-bold;
   }
   
   code, pre, .font-mono {
