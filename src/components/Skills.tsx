@@ -42,16 +42,15 @@ const Skills = () => {
   ];
 
   const getLevelColor = (level: string) => {
-    // Light mode: respective colors, Dark mode: green
     switch (level) {
       case 'learning':
-        return 'text-[#3b82f6] dark:text-[#22c55e]'; // Blue in light, Green in dark
+        return 'text-[#1E90FF]'; // Blue in both modes
       case 'familiar':
-        return 'text-[#eab308] dark:text-[#22c55e]'; // Yellow in light, Green in dark
+        return 'text-[#FFA500]'; // Orange in both modes
       case 'intermediate':
-        return 'text-[#22c55e] dark:text-[#22c55e]'; // Green in both
+        return 'text-[#32CD32]'; // Green in both modes
       case 'advanced':
-        return 'text-[#a855f7] dark:text-[#22c55e]'; // Purple in light, Green in dark
+        return 'text-[#8A2BE2]'; // Purple in both modes
       default:
         return 'text-foreground';
     }
@@ -130,19 +129,19 @@ const Skills = () => {
         {/* Legend */}
         <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm animate-fade-in">
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-[#3b82f6]" />
+            <div className="w-4 h-4 rounded-full bg-[#1E90FF]" />
             <span className="text-muted-foreground">Learning</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-[#eab308]" />
+            <div className="w-4 h-4 rounded-full bg-[#FFA500]" />
             <span className="text-muted-foreground">Familiar</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-[#22c55e]" />
+            <div className="w-4 h-4 rounded-full bg-[#32CD32]" />
             <span className="text-muted-foreground">Intermediate</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 rounded-full bg-[#a855f7]" />
+            <div className="w-4 h-4 rounded-full bg-[#8A2BE2]" />
             <span className="text-muted-foreground">Advanced</span>
           </div>
         </div>
