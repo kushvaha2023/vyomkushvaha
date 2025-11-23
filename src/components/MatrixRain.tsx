@@ -21,15 +21,14 @@ const MatrixRain = () => {
     const nums = '0123456789';
     const chars = katakana + latin + nums;
     
-    // Theme-aware settings
-    const isDark = theme === 'dark';
-    const fontSize = isDark ? 18 : 22; // Larger spacing in light mode
+    const fontSize = 18;
     const columns = Math.floor(canvas.width / fontSize);
     const drops: number[] = Array(columns).fill(1);
 
-    // Theme-aware colors - pure black background in both modes
-    const bgColor = 'rgba(0, 0, 0, 1)'; // Pure black in both modes
-    const textColorBase = isDark ? '0, 255, 65' : '0, 0, 0'; // Green for dark, pure black for light
+    // Theme-aware colors - pure black background in dark mode
+    const isDark = theme === 'dark';
+    const bgColor = isDark ? 'rgba(0, 0, 0, 1)' : 'rgba(255, 255, 255, 0.05)';
+    const textColorBase = isDark ? '0, 255, 65' : '40, 40, 40'; // Green for dark, dark gray for light
 
     const draw = () => {
       ctx.fillStyle = bgColor;
@@ -63,8 +62,7 @@ const MatrixRain = () => {
       }
     };
 
-    // Faster speed in light mode
-    const interval = setInterval(draw, isDark ? 35 : 28);
+    const interval = setInterval(draw, 35);
 
     const handleResize = () => {
       canvas.width = window.innerWidth;
@@ -82,7 +80,7 @@ const MatrixRain = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full z-10 opacity-40 pointer-events-none"
+      className="fixed top-0 left-0 w-full h-full z-10 opacity-40 dark:opacity-45 pointer-events-none"
       aria-hidden="true"
     />
   );
