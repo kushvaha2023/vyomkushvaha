@@ -123,10 +123,10 @@ const Contact = () => {
     <section id="contact" className="py-20 px-4 bg-muted/20">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="content-text text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Get In <span className="text-neon">Touch</span>
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
+          <p className="content-text text-sm sm:text-base max-w-2xl mx-auto px-4">
             Want to collaborate or say hi? Feel free to reach out using the form below or via email.
           </p>
         </div>
@@ -145,7 +145,7 @@ const Contact = () => {
                     <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Email</h4>
                     <a
                       href="mailto:vyomkushvaha@gmail.com"
-                      className="text-xs sm:text-sm text-muted-foreground hover:text-primary transition-colors break-all"
+                      className="content-text text-xs sm:text-sm hover:text-primary transition-colors break-all"
                     >
                       vyomkushvaha@gmail.com
                     </a>
@@ -158,7 +158,7 @@ const Contact = () => {
                   </div>
                   <div className="min-w-0 flex-1">
                     <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Location</h4>
-                    <p className="text-xs sm:text-sm text-muted-foreground">Anand, India</p>
+                    <p className="content-text text-xs sm:text-sm">Anand, India</p>
                   </div>
                 </div>
               </div>

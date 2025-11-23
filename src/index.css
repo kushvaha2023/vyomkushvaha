@@ -184,6 +184,16 @@
 }
 
 @layer components {
+  /* Custom Content Text Colors */
+  .content-text {
+    color: #0000CD; /* MediumBlue in light mode */
+  }
+  
+  .dark .content-text {
+    color: #00FF00; /* Lime in dark mode */
+    font-weight: bold;
+  }
+  
   /* Neon Text Glow Effect */
   .text-neon {
     @apply text-primary;

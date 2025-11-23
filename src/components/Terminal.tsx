@@ -144,7 +144,7 @@ const Terminal = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             Interactive <span className="text-neon">Terminal</span>
           </h2>
-          <p className="text-muted-foreground">Try commands like: whoami, skills, projects, help</p>
+          <p className="content-text">Try commands like: whoami, skills, projects, help</p>
         </div>
 
         <div
