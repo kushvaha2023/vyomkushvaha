@@ -1,3 +1,5 @@
+/* index.css - Clean Final Version */
+
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
 @font-face {
@@ -12,134 +14,111 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Hacker/Cyber Portfolio Design System - Pure Black + Neon Green */
-
+/* ========================== */
+/*      THEME VARIABLES       */
+/* ========================== */
 @layer base {
   :root {
-    /* Light Mode – Pure White + Cyber Cyan */
     --background: 0 0% 100%;
     --foreground: 200 100% 45%;
 
-    /* Card & Surface */
     --card: 0 0% 98%;
     --card-foreground: 200 100% 45%;
 
-    /* Popover */
     --popover: 0 0% 100%;
     --popover-foreground: 200 100% 45%;
 
-    /* Primary - Cyber Cyan (#00CCFF area) */
     --primary: 200 100% 50%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 200 100% 40%;
 
-    /* Secondary - Light Cyan Tint */
     --secondary: 200 60% 92%;
     --secondary-foreground: 200 100% 45%;
 
-    /* Muted */
     --muted: 200 40% 94%;
     --muted-foreground: 200 80% 45%;
 
-    /* Accent - Same Cyber Cyan */
     --accent: 200 100% 55%;
     --accent-foreground: 0 0% 100%;
 
-    /* Skill Label */
     --skill-label: 200 100% 50%;
 
-    /* Destructive */
     --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Border & Input */
     --border: 200 30% 75%;
     --input: 200 35% 92%;
     --ring: 200 100% 50%;
 
-    /* Terminal Colors */
     --terminal-bg: 200 40% 97%;
     --terminal-text: 200 100% 45%;
     --terminal-prompt: 200 100% 45%;
     --terminal-comment: 200 70% 40%;
 
-    /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(200 100% 50% / 0.15), hsl(200 100% 40% / 0.1));
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(200 30% 95%) 100%);
     --gradient-glow: radial-gradient(circle, hsl(200 100% 50% / 0.25) 0%, transparent 70%);
 
-    /* Shadows */
-    --shadow-neon: 0 0 20px hsl(200 100% 50% / 0.35), 0 0 40px hsl(200 100% 50% / 0.2);
-    --shadow-card: 0 4px 20px hsl(200 100% 50% / 0.1);
-    --glow-text: 0 0 10px hsl(200 100% 50% / 0.6);
+    /* CLEAN LIGHT MODE SHADOW */
+    --shadow-card: 0 4px 20px rgba(0,0,0,0.12);
 
-    /* Transitions */
+    --glow-text: 0 0 10px hsl(200 100% 50% / 0.6);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-glow: all 0.2s ease;
-
     --radius: 0.25rem;
   }
 
   .dark {
-    /* Core Colors - Pure Black + Matrix Green (DARK MODE) */
     --background: 0 0% 0%;
     --foreground: 120 100% 50%;
-    
-    /* Card & Surface */
+
     --card: 120 20% 5%;
     --card-foreground: 120 100% 50%;
-    
-    /* Popover */
+
     --popover: 120 20% 5%;
     --popover-foreground: 120 100% 50%;
-    
-    /* Primary - Neon Green */
+
     --primary: 120 100% 50%;
     --primary-foreground: 0 0% 0%;
     --primary-glow: 120 100% 35%;
-    
-    /* Secondary - Dark Green */
+
     --secondary: 120 30% 10%;
     --secondary-foreground: 120 100% 50%;
-    
-    /* Muted */
+
     --muted: 120 20% 8%;
     --muted-foreground: 120 50% 40%;
-    
-    /* Accent - Bright Cyber Cyan */
+
     --accent: 180 100% 65%;
     --accent-foreground: 0 0% 0%;
-    
-    /* Skill Label - Green for dark mode */
+
     --skill-label: 142 76% 36%;
-    
-    /* Destructive */
+
     --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
-    
-    /* Border & Input */
+
     --border: 120 50% 20%;
     --input: 120 50% 15%;
     --ring: 120 100% 50%;
-    
-    /* Terminal Colors */
+
     --terminal-bg: 120 20% 3%;
     --terminal-text: 120 100% 50%;
     --terminal-prompt: 120 100% 45%;
     --terminal-comment: 120 50% 35%;
-    
-    /* Gradients */
+
     --gradient-primary: linear-gradient(135deg, hsl(120 100% 50% / 0.1), hsl(120 100% 35% / 0.05));
     --gradient-hero: linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(120 20% 5%) 100%);
     --gradient-glow: radial-gradient(circle, hsl(120 100% 50% / 0.2) 0%, transparent 70%);
-    
-    /* Shadows & Effects */
-    --shadow-neon: 0 0 20px hsl(120 100% 50% / 0.5), 0 0 40px hsl(120 100% 50% / 0.3);
-    --shadow-card: 0 4px 20px hsl(120 100% 50% / 0.1);
+
+    /* CLEAN DARK MODE NEON SHADOW */
+    --shadow-card: 0 0 20px rgba(57,255,20,0.25);
+
     --glow-text: 0 0 10px hsl(120 100% 50% / 0.8);
   }
 }
 
+/* ========================== */
+/*     BASE ELEMENT STYLES    */
+/* ========================== */
 @layer base {
   * {
     @apply border-border;
@@ -149,7 +128,7 @@
     @apply bg-background;
     position: relative;
   }
-  
+
   html::before {
     content: '';
     position: fixed;
@@ -162,7 +141,7 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  
+
   .dark html::before {
     background-image: url('/src/assets/dark-bg.png');
   }
@@ -173,113 +152,66 @@
     background: transparent;
     position: relative;
   }
-  
+
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold tracking-tight;
   }
-  
+
   code, pre, .font-mono {
     font-family: 'JetBrains Mono', 'Courier New', monospace;
   }
 }
 
+/* ========================== */
+/*        COMPONENTS          */
+/* ========================== */
 @layer components {
-  /* Custom Content Text Colors */
   .content-text {
-    color: #1F75FE; /* #1F75FE in light mode */
+    color: #1F75FE;
   }
-  
+
   .dark .content-text {
-    color: #00FF00; /* Lime in dark mode */
+    color: #00FF00;
     font-weight: bold;
   }
-  
-  /* Neon Text Glow Effect */
+
   .text-neon {
     @apply text-primary;
     text-shadow: var(--glow-text);
   }
-  
+
   .text-neon-cyan {
     @apply text-accent;
     text-shadow: 0 0 10px hsl(180 100% 50% / 0.8);
   }
-  
-  /* Glowing Button */
+
   .btn-neon {
     @apply bg-primary text-primary-foreground font-mono font-semibold px-6 py-3 rounded;
     box-shadow: var(--shadow-neon);
     transition: var(--transition-glow);
   }
-  
+
   .btn-neon:hover {
     @apply brightness-125;
     box-shadow: 0 0 30px hsl(120 100% 50% / 0.7), 0 0 60px hsl(120 100% 50% / 0.4);
     transform: translateY(-2px);
   }
-  
-  /* Terminal Styling */
+
   .terminal {
     @apply font-mono text-sm rounded border border-border p-4;
     background: hsl(var(--terminal-bg));
     color: hsl(var(--terminal-text));
     box-shadow: var(--shadow-card);
   }
-  
+
   .terminal-prompt {
     color: hsl(var(--terminal-prompt));
   }
-  
+
   .terminal-comment {
     color: hsl(var(--terminal-comment));
   }
-  
-  /* Card Glow */
+
   .card-glow {
     @apply border border-border rounded-lg p-6 transition-all duration-300;
     background: hsl(var(--card));
-  }
-  
-  .card-glow:hover {
-    box-shadow: var(--shadow-card);
-    border-color: hsl(var(--primary) / 0.5);
-  }
-  
-  /* Matrix Rain Effect */
-  .matrix-bg {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  /* Scrollbar Styling */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary) / 0.3);
-    border-radius: 5px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.5);
-  }
-}
-
-@layer utilities {
-  .animation-delay-200 {
-    animation-delay: 200ms;
-  }
-  
-  .animation-delay-400 {
-    animation-delay: 400ms;
-  }
-  
-  .animation-delay-600 {
-    animation-delay: 600ms;
-  }
-}
