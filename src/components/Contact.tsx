@@ -155,12 +155,13 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="p-2 sm:p-3 rounded-lg bg-accent/10 border border-accent/20 flex-shrink-0">
+                  <div className="p-2 sm:p-3 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex-shrink-0">
   <MapPin
     size={18}
-    className="text-blue-500 dark:text-[#39FF14]"
+    className="!text-[#39FF14] dark:!text-[#39FF14]"
   />
 </div>
+
 
                   <div className="min-w-0 flex-1">
                     <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Location</h4>
