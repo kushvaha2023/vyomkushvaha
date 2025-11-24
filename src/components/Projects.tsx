@@ -1,5 +1,6 @@
 import { ExternalLink, Github } from 'lucide-react';
 import { Button } from './ui/button';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface Project {
   title: string;
@@ -10,6 +11,7 @@ interface Project {
 }
 
 const Projects = () => {
+  const { ref: projectsRef, isVisible } = useScrollAnimation();
   const projects: Project[] = [
     {
       title: 'Portfolio Website',
@@ -29,9 +31,9 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4">
+    <section id="projects" className="py-20 px-4" ref={projectsRef}>
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animate-fade-in">
+        <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Featured <span className="text-neon">Projects</span>
           </h2>
@@ -41,12 +43,11 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 animate-fade-in-up">
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {projects.map((project, index) => (
             <div
               key={project.title}
               className="card-glow group"
-              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="space-y-4">
                 <div>

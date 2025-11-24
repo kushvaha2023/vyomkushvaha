@@ -1,4 +1,5 @@
 import { Progress } from './ui/progress';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface Skill {
   name: string;
@@ -12,6 +13,7 @@ interface SkillCategory {
 }
 
 const Skills = () => {
+  const { ref: skillsRef, isVisible } = useScrollAnimation();
   const skillCategories: SkillCategory[] = [
     {
       title: 'Programming Languages',
@@ -72,9 +74,9 @@ const Skills = () => {
   };
 
   return (
-    <section id="skills" className="py-20 px-4 bg-muted/20">
+    <section id="skills" className="py-20 px-4 bg-muted/20" ref={skillsRef}>
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animate-fade-in">
+        <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="content-text text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Technical <span className="text-neon">Skills</span>
           </h2>
@@ -84,12 +86,11 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-fade-in-up">
+        <div className={`grid grid-cols-1 lg:grid-cols-3 gap-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {skillCategories.map((category, categoryIndex) => (
             <div
               key={category.title}
               className="card-glow bg-card/50 backdrop-blur-sm"
-              style={{ animationDelay: `${categoryIndex * 100}ms` }}
             >
               <h3 className="text-lg sm:text-xl font-bold mb-6 text-foreground border-b border-border pb-3">
                 {category.title}
@@ -99,7 +100,6 @@ const Skills = () => {
                   <div
                     key={skill.name}
                     className="group"
-                    style={{ animationDelay: `${(categoryIndex * 100) + (skillIndex * 50)}ms` }}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-semibold text-foreground text-sm">
@@ -127,7 +127,7 @@ const Skills = () => {
         </div>
 
         {/* Legend */}
-        <div className="mt-12 flex flex-wrap justify-center gap-6 text-sm animate-fade-in">
+        <div className={`mt-12 flex flex-wrap justify-center gap-6 text-sm transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <div className="flex items-center space-x-2">
             <div className="w-4 h-4 rounded-full bg-[#1E90FF]" />
             <span className="text-muted-foreground">Learning</span>
