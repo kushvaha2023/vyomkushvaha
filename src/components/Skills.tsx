@@ -111,7 +111,7 @@ const Skills = () => {
                     </div>
                     <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-muted/30">
                       <div
-                        className="h-full transition-all duration-700 ease-out bg-[#3b82f6] dark:bg-[#22c55e] group-hover:opacity-90 animate-fade-in"
+                        className="h-full transition-all duration-700 ease-out bg-primary group-hover:opacity-90 animate-fade-in"
                         style={{ 
                           width: `${skill.percentage}%`,
                           boxShadow: '0 0 10px rgba(0,0,0,0.1)',
