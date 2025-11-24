@@ -5,8 +5,10 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { toast } from '@/hooks/use-toast';
 import emailjs from '@emailjs/browser';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 const Contact = () => {
+  const { ref: contactRef, isVisible } = useScrollAnimation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -120,9 +122,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 bg-muted/20">
+    <section id="contact" className="py-20 px-4 bg-muted/20" ref={contactRef}>
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12 animate-fade-in">
+        <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="content-text text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Get In <span className="text-neon">Touch</span>
           </h2>
@@ -131,7 +133,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 animate-fade-in-up">
+        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Contact Info */}
           <div className="space-y-6 md:space-y-8">
             <div>

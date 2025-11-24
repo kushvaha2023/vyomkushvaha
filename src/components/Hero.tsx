@@ -4,8 +4,12 @@ import { Button } from './ui/button';
 import { useTheme } from 'next-themes';
 import logoLight from '@/assets/logo-light.png';
 import hackerHero from '@/assets/hacker-hero.png';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+
 const Hero = () => {
   const { theme } = useTheme();
+  const { ref: textRef, isVisible: textVisible } = useScrollAnimation();
+  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation();
   const [typedText, setTypedText] = useState('');
   const fullText = 'Cybersecurity, AI & Coding Enthusiast — Learning and Building.';
   useEffect(() => {
@@ -41,11 +45,11 @@ const Hero = () => {
     label: 'Email',
     external: false
   }];
-  return <section id="home" className="min-h-screen flex items-center justify-center pt-20 px-4">
+  return <section id="hero" className="min-h-screen flex items-center justify-center pt-20 px-4">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left: Text Content */}
-          <div className="space-y-6 animate-fade-in-up">
+          <div ref={textRef} className={`space-y-6 transition-all duration-1000 ${textVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="space-y-2">
               <p className="content-text font-mono text-xs sm:text-sm md:text-base">Hello, It's me</p>
               <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold font-futuretech break-words">Vyom Kushvaha</h1>
@@ -97,7 +101,7 @@ const Hero = () => {
           </div>
 
           {/* Right: Logo */}
-          <div className="flex justify-center items-center animate-fade-in animation-delay-400">
+          <div ref={imageRef} className={`flex justify-center items-center transition-all duration-1000 delay-300 ${imageVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
             <img 
               src={theme === 'light' ? logoLight : hackerHero}
               alt="Vyom Kushvaha Logo"
