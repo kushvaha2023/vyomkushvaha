@@ -156,7 +156,10 @@ const Contact = () => {
 
                 <div className="flex items-start space-x-3 sm:space-x-4">
                   <div className="p-2 sm:p-3 rounded-lg bg-accent/10 border border-accent/20 flex-shrink-0">
-  <MapPin className="location-icon" size={18} />
+  <MapPin
+    size={18}
+    className="text-blue-500 dark:text-[#39FF14]"
+  />
 </div>
 
                   <div className="min-w-0 flex-1">
