@@ -154,25 +154,27 @@ const Contact = () => {
                   </div>
                 </div>
 
-              <div className="p-2 sm:p-3 rounded-lg 
-  bg-[#00CCFF]/10 dark:bg-[#39FF14]/10 
-  border border-[#00CCFF]/20 dark:border-[#39FF14]/20 
+             <div className="flex items-start space-x-3 sm:space-x-4">
+  <div
+  className="p-2 sm:p-3 rounded-lg 
+  !bg-[#00CCFF]/10 dark:!bg-[#39FF14]/10 
+  !border !border-[#00CCFF]/20 dark:!border-[#39FF14]/20 
   flex-shrink-0"
 >
   <MapPin
     size={18}
-    className="text-[#00CCFF] dark:text-[#39FF14]"
+    className="!text-[#00CCFF] dark:!text-[#39FF14]"
   />
 </div>
 
 
-                  <div className="min-w-0 flex-1">
-                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Location</h4>
-                    <p className="content-text text-xs sm:text-sm">Anand, India</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div className="min-w-0 flex-1">
+    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+      Location
+    </h4>
+    <p className="content-text text-xs sm:text-sm">Anand, India</p>
+  </div>
+</div>
 
             <div className="terminal p-4 sm:p-6">
               <div className="space-y-2 font-mono text-xs sm:text-sm">
