@@ -154,11 +154,14 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3 sm:space-x-4">
-                  <div className="p-2 sm:p-3 rounded-lg bg-[#39FF14]/10 border border-[#39FF14]/20 flex-shrink-0">
+              <div className="p-2 sm:p-3 rounded-lg 
+  bg-[#00CCFF]/10 dark:bg-[#39FF14]/10 
+  border border-[#00CCFF]/20 dark:border-[#39FF14]/20 
+  flex-shrink-0"
+>
   <MapPin
     size={18}
-    className="!text-[#39FF14] dark:!text-[#39FF14]"
+    className="text-[#00CCFF] dark:text-[#39FF14]"
   />
 </div>
 
