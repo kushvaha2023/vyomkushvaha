@@ -19,7 +19,9 @@ const Contact = () => {
   // Initialize EmailJS
   emailjs.init('TP-iSknJTuHefrwdL');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -30,12 +32,10 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Trim inputs
     const trimmedName = formData.name.trim();
     const trimmedEmail = formData.email.trim();
     const trimmedMessage = formData.message.trim();
 
-    // Basic validation
     if (!trimmedName || !trimmedEmail || !trimmedMessage) {
       toast({
         title: 'Error',
@@ -46,7 +46,6 @@ const Contact = () => {
       return;
     }
 
-    // Length validation
     if (trimmedName.length > 100) {
       toast({
         title: 'Error',
@@ -77,7 +76,6 @@ const Contact = () => {
       return;
     }
 
-    // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(trimmedEmail)) {
       toast({
@@ -89,7 +87,6 @@ const Contact = () => {
       return;
     }
 
-    // Send email via EmailJS
     try {
       const templateParams = {
         from_name: trimmedName,
@@ -113,7 +110,8 @@ const Contact = () => {
       console.error('EmailJS Error:', error);
       toast({
         title: 'Failed to Send',
-        description: 'Please try again or email me directly at vyomkushvaha@gmail.com',
+        description:
+          'Please try again or email me directly at vyomkushvaha@gmail.com',
         variant: 'destructive',
       });
     } finally {
@@ -124,27 +122,42 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 px-4 bg-muted/20" ref={contactRef}>
       <div className="container mx-auto max-w-6xl">
-        <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div
+          className={`text-center mb-12 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="content-text text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Get In <span className="text-neon">Touch</span>
           </h2>
           <p className="content-text text-sm sm:text-base max-w-2xl mx-auto px-4">
-            Want to collaborate or say hi? Feel free to reach out using the form below or via email.
+            Want to collaborate or say hi? Feel free to reach out using the form
+            below or via email.
           </p>
         </div>
 
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 transition-all duration-1000 delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           {/* Contact Info */}
           <div className="space-y-6 md:space-y-8">
             <div>
-              <h3 className="text-lg sm:text-xl font-bold mb-4 md:mb-6">Contact Information</h3>
+              <h3 className="text-lg sm:text-xl font-bold mb-4 md:mb-6">
+                Contact Information
+              </h3>
+
               <div className="space-y-4">
+                {/* EMAIL */}
                 <div className="flex items-start space-x-3 sm:space-x-4">
                   <div className="p-2 sm:p-3 rounded-lg bg-primary/10 border border-primary/20 flex-shrink-0">
                     <Mail className="text-primary" size={18} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">Email</h4>
+                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                      Email
+                    </h4>
                     <a
                       href="mailto:vyomkushvaha@gmail.com"
                       className="content-text text-xs sm:text-sm hover:text-primary transition-colors break-all"
@@ -154,40 +167,46 @@ const Contact = () => {
                   </div>
                 </div>
 
-             <div className="flex items-start space-x-3 sm:space-x-4">
-  <div
-  className="p-2 sm:p-3 rounded-lg 
-  !bg-[#00CCFF]/10 dark:!bg-[#39FF14]/10 
-  !border !border-[#00CCFF]/20 dark:!border-[#39FF14]/20 
-  flex-shrink-0"
->
-  <MapPin
-    size={18}
-    className="!text-[#00CCFF] dark:!text-[#39FF14]"
-  />
-</div>
+                {/* LOCATION */}
+                <div className="flex items-start space-x-3 sm:space-x-4">
+                  <div
+                    className="p-2 sm:p-3 rounded-lg 
+                    !bg-[#00CCFF]/10 dark:!bg-[#39FF14]/10 
+                    !border !border-[#00CCFF]/20 dark:!border-[#39FF14]/20 
+                    flex-shrink-0"
+                  >
+                    <MapPin
+                      size={18}
+                      className="!text-[#00CCFF] dark:!text-[#39FF14]"
+                    />
+                  </div>
 
-
-  <div className="min-w-0 flex-1">
-    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
-      Location
-    </h4>
-    <p className="content-text text-xs sm:text-sm">Anand, India</p>
-  </div>
-</div>
-
-            <div className="terminal p-4 sm:p-6">
-              <div className="space-y-2 font-mono text-xs sm:text-sm">
-                <div className="flex items-center space-x-2">
-                  <span className="terminal-prompt">$</span>
-                  <span className="text-foreground">cat contact.txt</span>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-semibold text-foreground mb-1 text-sm sm:text-base">
+                      Location
+                    </h4>
+                    <p className="content-text text-xs sm:text-sm">
+                      Anand, India
+                    </p>
+                  </div>
                 </div>
-                <div className="terminal-comment pl-4 space-y-1">
-                  <p>I'm always open to:</p>
-                  <p>• Collaboration opportunities</p>
-                  <p>• Learning together</p>
-                  <p>• Tech discussions</p>
-                  <p>• Project feedback</p>
+
+                {/* TERMINAL BOX */}
+                <div className="terminal p-4 sm:p-6">
+                  <div className="space-y-2 font-mono text-xs sm:text-sm">
+                    <div className="flex items-center space-x-2">
+                      <span className="terminal-prompt">$</span>
+                      <span className="text-foreground">cat contact.txt</span>
+                    </div>
+
+                    <div className="terminal-comment pl-4 space-y-1">
+                      <p>I'm always open to:</p>
+                      <p>• Collaboration opportunities</p>
+                      <p>• Learning together</p>
+                      <p>• Tech discussions</p>
+                      <p>• Project feedback</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -197,7 +216,10 @@ const Contact = () => {
           <div className="card-glow">
             <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div>
-                <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="name"
+                  className="block text-xs sm:text-sm font-medium text-foreground mb-2"
+                >
                   Name
                 </label>
                 <Input
@@ -213,7 +235,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-xs sm:text-sm font-medium text-foreground mb-2"
+                >
                   Email
                 </label>
                 <Input
@@ -229,7 +254,10 @@ const Contact = () => {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-foreground mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-xs sm:text-sm font-medium text-foreground mb-2"
+                >
                   Message
                 </label>
                 <Textarea
