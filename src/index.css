@@ -211,7 +211,7 @@
   }
 
   .terminal {
-    @apply font-mono text-sm rounded border border-border p-4;
+    @apply font-mono text-sm rounded border border-border px-5 py-4 md:px-4;
     background: hsl(var(--terminal-bg));
     color: hsl(var(--terminal-text));
     box-shadow: var(--shadow-card);
