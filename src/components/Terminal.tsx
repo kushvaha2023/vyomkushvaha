@@ -168,7 +168,7 @@ const Terminal = () => {
 
         <div
           ref={terminalRef}
-          className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto overflow-x-hidden transition-all duration-1000 delay-200 w-full max-w-full px-4 ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' : 'opacity-0 translate-y-10'}`}
+          className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto transition-all duration-1000 delay-200 w-full max-w-full pl-[18px] md:pl-4 pr-4 ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' : 'opacity-0 translate-y-10'}`}
           onClick={() => inputRef.current?.focus()}
         >
           {history.map((cmd, index) => (
