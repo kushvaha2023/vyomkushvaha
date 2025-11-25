@@ -158,7 +158,7 @@ const Terminal = () => {
 
   return (
     <section id="terminal" className="py-20 px-4" ref={terminalSectionRef}>
-      <div className="container mx-auto max-w-4xl w-full flex flex-col items-center">
+      <div className="container mx-auto max-w-4xl w-full flex flex-col">
         <div className={`text-center mb-8 transition-all duration-1000 w-full ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             Interactive <span className="text-neon">Terminal</span>
