@@ -158,8 +158,8 @@ const Terminal = () => {
 
   return (
     <section id="terminal" className="py-20 px-4" ref={terminalSectionRef}>
-      <div className="container mx-auto max-w-4xl w-full">
-        <div className={`text-center mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className="container mx-auto max-w-4xl w-full flex flex-col items-center">
+        <div className={`text-center mb-8 transition-all duration-1000 w-full ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
             Interactive <span className="text-neon">Terminal</span>
           </h2>
@@ -168,7 +168,7 @@ const Terminal = () => {
 
         <div
           ref={terminalRef}
-          className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto transition-all duration-1000 delay-200 w-full mx-auto ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' : 'opacity-0 translate-y-10'}`}
+          className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto overflow-x-hidden transition-all duration-1000 delay-200 w-full max-w-full mx-auto ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' : 'opacity-0 translate-y-10'}`}
           onClick={() => inputRef.current?.focus()}
         >
           {history.map((cmd, index) => (
