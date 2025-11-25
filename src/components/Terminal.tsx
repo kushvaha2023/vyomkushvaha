@@ -168,13 +168,13 @@ const Terminal = () => {
 
         <div
           ref={terminalRef}
-          className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto overflow-x-hidden transition-all duration-1000 delay-200 w-full max-w-full mx-auto ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' : 'opacity-0 translate-y-10'}`}
+          className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto overflow-x-hidden transition-all duration-1000 delay-200 w-full max-w-full px-4 ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' : 'opacity-0 translate-y-10'}`}
           onClick={() => inputRef.current?.focus()}
         >
           {history.map((cmd, index) => (
             <div key={index} className="mb-4">
               {cmd.input && (
-                <div className="flex items-center space-x-2">
+                <div className="flex">
                   <span className="terminal-prompt">vyom@portfolio:~$</span>
                   <span className="text-foreground">{cmd.input}</span>
                 </div>
@@ -189,7 +189,7 @@ const Terminal = () => {
             </div>
           ))}
 
-          <form onSubmit={handleSubmit} className="flex items-center space-x-2">
+          <form onSubmit={handleSubmit} className="flex">
             <span className="terminal-prompt">vyom@portfolio:~$</span>
             <input
               ref={inputRef}
