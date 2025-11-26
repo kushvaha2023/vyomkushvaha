@@ -201,7 +201,6 @@ const Terminal = () => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               className="flex-1 bg-transparent outline-none text-foreground font-mono break-words text-right transition-all duration-150"
-              dir="rtl"
               autoFocus
               spellCheck={false}
             />
