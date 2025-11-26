@@ -157,7 +157,7 @@ const Terminal = () => {
   };
 
   return (
-   <section id="terminal" ref={terminalSectionRef} className="w-full flex justify-center px-0 overflow-hidden py-20">
+   <section id="terminal" ref={terminalSectionRef} className="w-full flex justify-center px-4 overflow-hidden py-20">
       <div className="container mx-auto max-w-4xl w-full flex flex-col">
         <div className={`text-center mb-8 transition-all duration-1000 w-full ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl md:text-4xl font-bold mb-2">
@@ -168,9 +168,9 @@ const Terminal = () => {
 
         <div
   ref={terminalRef}
-  className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto 
-  w-[90%] max-w-[600px] mx-auto break-words whitespace-pre-wrap 
-  transition-all duration-1000 delay-200 pl-[18px] md:pl-4 pr-4 
+  className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto overflow-x-hidden
+  w-full max-w-[600px] mx-auto break-words whitespace-pre-wrap 
+  transition-all duration-1000 delay-200
   ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' 
   : 'opacity-0 translate-y-10'}`}
   onClick={() => inputRef.current?.focus()}
