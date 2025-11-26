@@ -169,7 +169,7 @@ const Terminal = () => {
         <div
   ref={terminalRef}
   className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto overflow-x-hidden
-  w-full max-w-[600px] mx-auto break-words whitespace-pre-wrap 
+  w-full max-w-[600px] mx-auto break-words whitespace-pre-wrap pl-6 md:pl-5
   transition-all duration-1000 delay-200
   ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' 
   : 'opacity-0 translate-y-10'}`}
