@@ -205,7 +205,7 @@ const Terminal = () => {
               autoFocus
               spellCheck={false}
             />
-            <span className="terminal-prompt whitespace-nowrap ml-2">vyom@portfolio:~$</span>
+            <span className="terminal-prompt whitespace-nowrap ml-2 animate-fade-in">vyom@portfolio:~$</span>
           </form>
         </div>
       </div>
