@@ -169,7 +169,7 @@ const Terminal = () => {
         <div
   ref={terminalRef}
   className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto overflow-x-hidden
-  w-full max-w-[600px] mx-auto break-words whitespace-pre-wrap px-8 md:px-6
+  w-full max-w-[600px] mx-auto break-words whitespace-pre-wrap px-8 md:px-6 text-right
   transition-all duration-1000 delay-200
   ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' 
   : 'opacity-0 translate-y-10'}`}
@@ -178,14 +178,14 @@ const Terminal = () => {
           {history.map((cmd, index) => (
             <div key={index} className="mb-4">
               {cmd.input && (
-                <div className="flex break-words text-sm md:text-base">
+                <div className="flex break-words text-sm md:text-base justify-end">
                   <span className="terminal-prompt whitespace-nowrap mr-2">vyom@portfolio:~$</span>
                   <span className="text-foreground break-words">{cmd.input}</span>
                 </div>
               )}
               <div className="mt-2 space-y-1">
                 {cmd.output.map((line, lineIndex) => (
-                  <div key={lineIndex} className="terminal-comment pl-4 break-words text-sm md:text-base">
+                  <div key={lineIndex} className="terminal-comment pr-4 break-words text-sm md:text-base">
                     {line}
                   </div>
                 ))}
@@ -193,7 +193,7 @@ const Terminal = () => {
             </div>
           ))}
 
-          <form onSubmit={handleSubmit} className="flex text-sm md:text-base">
+          <form onSubmit={handleSubmit} className="flex text-sm md:text-base justify-end">
             <span className="terminal-prompt whitespace-nowrap mr-2">vyom@portfolio:~$</span>
             <input
               ref={inputRef}
