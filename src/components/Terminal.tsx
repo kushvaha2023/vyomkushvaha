@@ -168,20 +168,20 @@ const Terminal = () => {
 
         <div
           ref={terminalRef}
-          className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto transition-all duration-1000 delay-200 w-full max-w-full pl-[18px] md:pl-4 pr-4 ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' : 'opacity-0 translate-y-10'}`}
+          className={`terminal min-h-[400px] max-h-[500px] overflow-y-auto overflow-x-auto w-full max-w-full transition-all duration-1000 delay-200 pl-[18px] md:pl-4 pr-4 ${isVisible ? 'opacity-100 translate-y-0 dark:shadow-[0_0_30px_rgba(0,255,0,0.3)]' : 'opacity-0 translate-y-10'}`}
           onClick={() => inputRef.current?.focus()}
         >
           {history.map((cmd, index) => (
             <div key={index} className="mb-4">
               {cmd.input && (
-                <div className="flex">
+                <div className="flex break-words text-sm md:text-base">
                   <span className="terminal-prompt">vyom@portfolio:~$</span>
-                  <span className="text-foreground">{cmd.input}</span>
+                  <span className="text-foreground break-words">{cmd.input}</span>
                 </div>
               )}
               <div className="mt-2 space-y-1">
                 {cmd.output.map((line, lineIndex) => (
-                  <div key={lineIndex} className="terminal-comment pl-4">
+                  <div key={lineIndex} className="terminal-comment pl-4 break-words text-sm md:text-base">
                     {line}
                   </div>
                 ))}
@@ -189,7 +189,7 @@ const Terminal = () => {
             </div>
           ))}
 
-          <form onSubmit={handleSubmit} className="flex">
+          <form onSubmit={handleSubmit} className="flex text-sm md:text-base">
             <span className="terminal-prompt">vyom@portfolio:~$</span>
             <input
               ref={inputRef}
@@ -197,7 +197,7 @@ const Terminal = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="flex-1 bg-transparent outline-none text-foreground font-mono"
+              className="flex-1 bg-transparent outline-none text-foreground font-mono break-words"
               autoFocus
               spellCheck={false}
             />
