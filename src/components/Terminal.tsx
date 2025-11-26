@@ -194,17 +194,18 @@ const Terminal = () => {
           ))}
 
           <form onSubmit={handleSubmit} className="flex text-sm md:text-base justify-end">
-            <span className="terminal-prompt whitespace-nowrap mr-2">vyom@portfolio:~$</span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              className="flex-1 bg-transparent outline-none text-foreground font-mono break-words"
+              className="flex-1 bg-transparent outline-none text-foreground font-mono break-words text-right transition-all duration-150"
+              dir="rtl"
               autoFocus
               spellCheck={false}
             />
+            <span className="terminal-prompt whitespace-nowrap ml-2">vyom@portfolio:~$</span>
           </form>
         </div>
       </div>
