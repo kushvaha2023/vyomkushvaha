@@ -178,10 +178,10 @@ const Terminal = () => {
           {history.map((cmd, index) => (
             <div key={index} className="mb-4">
               {cmd.input && (
-                <div className="flex break-words text-sm md:text-base justify-end">
-                  <span className="terminal-prompt whitespace-nowrap mr-2">vyom@portfolio:~$</span>
-                  <span className="text-foreground break-words">{cmd.input}</span>
-                </div>
+                <div className="flex items-center justify-end text-sm md:text-base">
+  <span className="terminal-prompt whitespace-nowrap">vyom@portfolio:~$</span>
+  <span className="text-foreground ml-2">{cmd.input}</span>
+</div>
               )}
               <div className="mt-2 space-y-1">
                 {cmd.output.map((line, lineIndex) => (
@@ -192,21 +192,21 @@ const Terminal = () => {
               </div>
             </div>
           ))}
-
-          <form onSubmit={handleSubmit} className="flex text-sm md:text-base justify-end">
-            <input
-              ref={inputRef}
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              className="flex-1 bg-transparent outline-none text-foreground font-mono break-words text-right transition-all duration-150"
-              dir="rtl"
-              autoFocus
-              spellCheck={false}
-            />
-            <span className="terminal-prompt whitespace-nowrap ml-2 animate-fade-in">vyom@portfolio:~$</span>
-          </form>
+ <form onSubmit={handleSubmit} className="flex items-center ml-auto transition-all duration-300 ease-out">
+  <span className="terminal-prompt whitespace-nowrap">vyom@portfolio:~$</span>
+  <input
+    ref={inputRef}
+    type="text"
+    value={input}
+    onChange={(e) => setInput(e.target.value)}
+    onKeyDown={handleKeyDown}
+    className="bg-transparent outline-none text-foreground font-mono ml-2 w-auto min-w-[2px] transition-all duration-150"
+    style={{ width: `${Math.max(input.length, 1)}ch` }}
+    autoFocus
+    spellCheck={false}
+  />
+  <span className="animate-pulse">▌</span>
+</form>
         </div>
       </div>
     </section>
